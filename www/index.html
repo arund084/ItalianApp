@@ -391,48 +391,19 @@ if(!jQuery.isEmptyObject(pageMessage))
 
 	    return shop_connected;
 	}
-
 	
 	app.initialize();
-	
 
 	function oauth2_login(){
-	   /*  $.oauth2({
-	        auth_url: 'https://accounts.google.com/o/oauth2/auth',
-	        response_type: 'token',
-	        logout_url: 'https://accounts.google.com/logout',
-	        client_id: '827360061072-4m6tc6cc6rf1gk0g10570ed38pp30f8o.apps.googleusercontent.com',
-	        redirect_uri: 'http://www.example.com/oauth2callback',
-	        other_params: {scope: 'profile'}
-	    }, function(token, response){
-
-	    	var url='https://www.googleapis.com/plus/v1/people/me?access_token='+token+'&key='+'AIzaSyCv1mFzPS6dPszP3o0aOLLTPc4P1Csgv5g';
-
-	    	$.get(url,function(response){
-
-	    		alert(JSON.stringify( response ));
-	    		socialLogin( response.id , response.displayName, '' , 'G' , '../img/profile.png');
-
-	        })
-
-	    }, function(error, response){
-<<<<<<< 779f2f369ddeb067b5a46ee4b2b12d058ad73ba4
-	    }); */
 
 		 window.plugins.googleplus.login(
 			        {},
 			        function (obj) {
-			        	
-
 			        	socialLogin( obj.userId , obj.displayName, obj.email , 'G' , obj.imageUrl);
-
-			            
 			        },
 			        function (msg) {
-			          alert('error : ' + msg );
 			        }
 			    );
-
 	}
 
 	</script>
