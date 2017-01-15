@@ -28,8 +28,6 @@ document.addEventListener('deviceready', function () {
       var appointmentId = jsonData.notification.payload.additionalData.appointmentId ;
       
       var client_id = jsonData.notification.payload.additionalData.user_id ;
-   
-      //alert('app' + appointmentId );
       
       document.location = 'pages/my-appointment.html?client_id=' + client_id + '&appointment_id=' + appointmentId;          
       

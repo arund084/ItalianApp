@@ -255,6 +255,7 @@ function getShopConnected(){
 
   					$( shop_connected_clone ).find('.disconnect_shop').attr('shop_id', value.shop_id);
   					$( shop_connected_clone ).find('.disconnect_shop').attr('user_id', user_id );
+  					$( shop_connected_clone ).find('.phone-square').attr('href' , 'tel:' + value.shop_phone1 );
 
   					$( shop_connected_clone ).removeClass('display_none');
 
@@ -262,7 +263,6 @@ function getShopConnected(){
   						$( shop_connected_clone ).find('.fav_shop_icon').css('color','#fddb32');
   						$('.fav_shop_details').find('.details').append( shop_connected_clone.html() );
   					}
-
   					$('.shop_details').find('.details').append( shop_connected_clone.html() );
   	  			});
   			}
@@ -390,7 +390,7 @@ $(document).ready(function(){
 				<div class="feed-element appoinment" >
 					<div class="media-body appoinment-options swiper-slide" >
 						<div style="width: 60%;float: left;margin-top: 25px;">
-						<i class="phone-square "> <img src="../img/g4335.png" style="width: 65px !important;cursor:pointer;padding: 10px;"></i>
+						<a class="phone-square"> <img src="../img/g4335.png" style="width: 65px !important;cursor:pointer;padding: 10px;"></a>
 						<i class="fav_shop_icon"><img src="../img/g4294.png" style="width: 65px !important;cursor:pointer;padding: 10px;"></i>
 						<i class="disconnect_shop"><img src="../img/g4278.png" style="width: 65px !important;cursor:pointer;padding: 10px;"></i>
 						</div>

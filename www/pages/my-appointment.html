@@ -578,7 +578,7 @@ function loadAppointmentDetails(){
 
 					var date_split = date.split('-');
 
-  					$('.modal-date-time').html( date_split[2] + ' ' + month[ date_split[1] ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
+  					$('.modal-date-time').html( date_split[2] + ' ' + month[ date_split[1].replace(/^0+/, '') ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
   					$('.modal_shop_name').html( value.shop_name1 );
   					$('.modal_doc_name').html( value.first_line_activity );
   					$('.modal_shop_desc').html( value.shop_desc );
@@ -733,12 +733,12 @@ function loadAppointmentDetails(){
 							
 								<div class="media-body " id="confirm_window">
 									<div class="pull-left" style="width: 50%;float: left;padding: 10px;">
-										<i class="check-circle"><img src="../img/g4290.png" style="width: 65px; padding: 10px;"  > </i>
+										<i class="check-circle modal_confirm_app"><img src="../img/g4290.png" style="width: 65px; padding: 10px;"  > </i>
 										<div style="clear: both;"></div>
 										<span style="color: green; font-weight: bold;" class="modal_confirm_app">CONFIRM</span><span></span>
 									</div>
 									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
-										<i class="phone-square "><img src="../img/g4278.png" style="width: 65px; padding: 10px;"  > </i>
+										<i class="phone-square postpone_app_main"><img src="../img/g4278.png" style="width: 65px; padding: 10px;"  > </i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="postpone_app_main" >POSTPONE
 										</span><span></span>
@@ -746,13 +746,13 @@ function loadAppointmentDetails(){
 								</div>
 								<div class="media-body " id="postpone_window" style="display: none;">
 									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
-										<i class="phone-square"> <img src="../img/g4342.png" style="width: 65px !important;padding: 10px;"></i>
+										<i class="phone-square modal_postpone_app"> <img src="../img/g4342.png" style="width: 65px !important;padding: 10px;"></i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE CALL ME
 										</span><span></span>
 									</div>
 									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
-										<i class="phone-square "> <img src="../img/g4350.png" style="width: 65px !important;padding: 10px;"></i>
+										<i class="phone-square modal_postpone_app"> <img src="../img/g4350.png" style="width: 65px !important;padding: 10px;"></i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE, I WILL CALL YOU LATER
 										</span><span></span>
