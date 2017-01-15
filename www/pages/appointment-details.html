@@ -92,6 +92,7 @@ body {
 
 <script type="text/javascript">
 
+
 $(document).ready(function(){
 
 	   loadAppointmentDetails();
@@ -202,9 +203,7 @@ function loadAppointmentDetails(){
 					
 					var date_split = date.split('-');
 					
-					
-					
-  					$('.date-time').html( date_split[2] + ' ' + month[ date_split[1] ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
+  					$('.date-time').html( date_split[2] + ' ' + month[ date_split[1].replace(/^0+/, '') ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
   					$('.shop_name').html( value.shop_name1 );
   					$('.shop_desc').html( value.shop_desc );
   					$('.doctor_name').html( value.first_line_activity ) 
