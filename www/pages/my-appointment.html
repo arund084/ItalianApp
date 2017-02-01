@@ -12,6 +12,7 @@
     <link href="../css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/spinner.css" rel="stylesheet" type="text/css">
 
 <style type="text/css">
 
@@ -168,11 +169,14 @@ font-weight: bold;
 </div>
 
 <div style="margin-top: 15%;">
+
+<div class="loading">Loading&#8230;</div>
+
 	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
 	No appointment available
 	</div>
 
-	<div class="col-lg-12 day_1 appointment_days" style="margin-top: 35px;">
+	<div class="col-lg-12 day_1 appointment_days" style="margin-top: 35px;display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				Today
@@ -180,7 +184,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_2 appointment_days">
+	<div class="col-lg-12 day_2 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				Tomorrow
@@ -188,7 +192,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_3 appointment_days">
+	<div class="col-lg-12 day_3 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				<span class="day_no"></span>
@@ -196,7 +200,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_4 appointment_days">
+	<div class="col-lg-12 day_4 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				<span class="day_no"></span>
@@ -204,7 +208,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_5 appointment_days">
+	<div class="col-lg-12 day_5 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				<span class="day_no"></span>
@@ -212,7 +216,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_6 appointment_days">
+	<div class="col-lg-12 day_6 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				<span class="day_no"></span>
@@ -220,7 +224,7 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 day_7 appointment_days">
+	<div class="col-lg-12 day_7 appointment_days" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				<span class="day_no"></span>
@@ -368,6 +372,9 @@ function myappointmentDetails(){
     	if( dataLength == 0 ){
     		$( value ).remove();
     	}
+    	else{
+    		$( value ).show();
+    	}
     });
 
     appointment_days = $('.appointment_days');
@@ -375,6 +382,8 @@ function myappointmentDetails(){
     if( appointment_days.length == 0 ){
     	$('.no_app').show();
     }
+    
+    $('.loading').hide();
 }
 
 function getDayNo( seven_days , user_apnt_dt  ){

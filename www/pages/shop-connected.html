@@ -13,6 +13,7 @@
     <link href="../css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/spinner.css" rel="stylesheet" type="text/css">
 
 <style type="text/css">
 
@@ -169,11 +170,14 @@ font-weight: bold;
 </div>
 
 <div style="margin-top: 15%;">
+
+<div class="loading">Loading&#8230;</div>
+
 	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
 	No shop connected
 	</div>
 
-	<div class="col-lg-12 day_1 fav_shop_details" >
+	<div class="col-lg-12 day_1 fav_shop_details" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				Favorite
@@ -181,7 +185,7 @@ font-weight: bold;
 			<div class="details"></div>
 		</div>
 	</div>
-	<div class="col-lg-12 shop_details">
+	<div class="col-lg-12 shop_details" style="display: none;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
 				All Shop
@@ -255,7 +259,10 @@ function getShopConnected(){
 
   					$( shop_connected_clone ).find('.disconnect_shop').attr('shop_id', value.shop_id);
   					$( shop_connected_clone ).find('.disconnect_shop').attr('user_id', user_id );
-  					$( shop_connected_clone ).find('.phone-square').attr('href' , 'tel:' + value.shop_phone1 );
+  					//$( shop_connected_clone ).find('.phone-square').attr('href' , 'tel:' + value.shop_phone1 );
+  					$( shop_connected_clone ).find('.phone-square').attr('shop_id', value.shop_id);
+  					$( shop_connected_clone ).find('.phone-square').attr('user_id', user_id );
+  					
 
   					$( shop_connected_clone ).removeClass('display_none');
 
@@ -271,6 +278,8 @@ function getShopConnected(){
   contentType: false,
   processData: false
 });
+    
+    $('.loading').hide();
 }
 
 $(document).ready(function(){
@@ -280,11 +289,11 @@ $(document).ready(function(){
 	var allshopcount = $('.shop_details').find('.details').find('div').length;
 	var favshopcount = $('.fav_shop_details').find('.details').find('div').length;
 
-	if( favshopcount == 0 ){
-		$('.fav_shop_details').hide();
+	if( favshopcount != 0 ){
+		$('.fav_shop_details').show();
 	}
-	if( allshopcount == 0 ){
-		$('.shop_details').hide();
+	if( allshopcount != 0 ){
+		$('.shop_details').show();
 	}
 
 	if( allshopcount == 0 ){
@@ -294,6 +303,34 @@ $(document).ready(function(){
 	var swiper = new Swiper('.swiper-container', {
         loop: true
     });
+	
+	
+
+	$(this).on( 'click' , '.phone-square' , function(){
+
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+
+		var formData = new FormData();
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+		formData.append( 'call_me' , true );
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/call_shop_app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+
+	});
+
 
 	$(this).on( 'click' , '.fav_shop_icon' , function(){
 
